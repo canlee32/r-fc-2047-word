@@ -1,6 +1,6 @@
 [project]
 name = "r-fc-2047-word"
-version = "0.1.1"
+version = "0.1.2"
 description = "Decodes RFC 2047 encoded-word fragments in email headers into Python strings."
 requires-python = ">=3.10"
 dependencies = []
