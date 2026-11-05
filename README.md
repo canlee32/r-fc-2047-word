@@ -24,3 +24,10 @@ The trade-off is that this library does not unfold headers or handle MIME-word s
 ## Edge cases
 
 Adjacent encoded-words separated by linear-white-space (` ` or `\t`) are concatenated without a space, per RFC 2047 §6.2. Two encoded-words using different charsets are joined verbatim; no transcoding is attempted. Unknown charsets fall back to latin-1 so bytes survive rather than raising `LookupError`.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
